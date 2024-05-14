@@ -316,14 +316,19 @@ This document requests/registers a new entry to the "HPKE KEM Identifiers"
 The authors would like to thank
 P. Kampanakis,
 I. Liusvaara,
-T. Wiggers, and
-S. Farrell
+T. Wiggers,
+S. Farrell, and
+R. Siles
 for their input.
 
 # Change log
 
 > **RFC Editor's Note:** Please remove this section prior to publication of a
 > final version of this document.
+
+## Since draft-westerbaan-cfrg-hpke-xyber768d00-02
+
+- Corrected missing (empty) info parameter to LabeledExpand.
 
 ## Since draft-westerbaan-cfrg-hpke-xyber768d00-01
 
