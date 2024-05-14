@@ -12,27 +12,27 @@
 for HPKE (RFC9180). This KEM does not support the authenticated modes
 of HPKE. 
     " name="description">
-<meta content="xml2rfc 3.17.1" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="kyber" name="keyword">
 <meta content="post-quantum" name="keyword">
 <meta content="x25519" name="keyword">
 <meta content="hpke" name="keyword">
 <meta content="draft-westerbaan-cfrg-hpke-xyber768d00-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.17.1
-    Python 3.10.11
-    appdirs 1.4.4
-    ConfigArgParse 1.5.3
-    google-i18n-address 2.5.2
+  xml2rfc 3.21.0
+    Python 3.11.9
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
-    lxml 4.9.2
+    lxml 4.9.3
+    platformdirs 4.2.1
     pycountry 22.3.5
-    PyYAML 6.0
-    requests 2.28.1
-    setuptools 65.6.0
+    PyYAML 6.0.1
+    requests 2.31.0
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.13
 -->
 <link href="draft-westerbaan-cfrg-hpke-xyber768d00.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -614,6 +614,7 @@ sub, sup {
   clear: left;
   float: left;
   text-align: right;
+  margin-right: 1ch;
 }
 #identifiers dd {
   margin: 0;
@@ -654,7 +655,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -665,7 +666,8 @@ sub, sup {
 .references dt {
   text-align: right;
   font-weight: bold;
-  min-width: 7em;
+  min-width: 10ch;
+  margin-right: 1.5ch;
 }
 .references dt:target::before {
   content: "⇒";
@@ -673,7 +675,7 @@ sub, sup {
   margin: 0 10px 0 -25px;
 }
 .references dd {
-  margin-left: 8em !important;
+  margin-left: 12ch !important;
   overflow: auto;
 }
 
@@ -746,7 +748,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -870,16 +872,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -892,6 +891,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -993,28 +995,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1051,11 +1031,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">hpke-xyber768d00</td>
-<td class="right">April 2023</td>
+<td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Westerbaan &amp; Wood</td>
-<td class="center">Expires 24 October 2023</td>
+<td class="center">Expires 15 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-westerbaan-cfrg-hpke-xyber768d00-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-04-22" class="published">22 April 2023</time>
+<time datetime="2024-05-14" class="published">14 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-10-24">24 October 2023</time></dd>
+<dd class="expires"><time datetime="2024-11-15">15 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1129,7 +1109,7 @@ of HPKE.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 October 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1138,7 +1118,7 @@ of HPKE.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1380,7 +1360,7 @@ DHKEM and Kyber768Draft00.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <pre>
 def DeriveKeyPair(ikm):
   dkp_prk = LabeledExtract("", "dkp_prk", ikm)
-  seed = LabeledExpand(dkp_prk, "sk", 32 + 64)
+  seed = LabeledExpand(dkp_prk, "sk", "", 32 + 64)
   seed1 = seed[0:32]
   seed2 = seed[32:96]
   sk1, pk1 = DHKEM.DeriveKeyPair(seed1)
@@ -1390,7 +1370,7 @@ def DeriveKeyPair(ikm):
 </div>
 <p id="section-3.3-3">DHKEM.DeriveKeyPair() is DeriveKeyPair() defined for DHKEM
 in <span><a href="https://rfc-editor.org/rfc/rfc9180#section-7.1.3" class="relref">Section 7.1.3</a> of [<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. Kyber768Draft00.DeriveKeyPair() is the key
-generation as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-02#section-11.1" class="relref">Section 11.1</a> of [<a href="#KYBER" class="cite xref">KYBER</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+generation as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-04#section-11.1" class="relref">Section 11.1</a> of [<a href="#KYBER" class="cite xref">KYBER</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.3-4">The suite_id used implicitly in LabeledExtract() and LabeledExpand() on
 lines 2 and 3, is derived from the KEM identifier of the hybrid (0x0030).<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 <p id="section-3.3-5">The suite_id used implicitly in LabeledExpand() and LabeledExtract()
@@ -1522,6 +1502,7 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
       <h2 id="name-references">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-6.1">
         <h3 id="name-normative-references">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
@@ -1529,7 +1510,7 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <dl class="references">
 <dt id="KYBER">[KYBER]</dt>
         <dd>
-<span class="refAuthor">Schwabe, P.</span> and <span class="refAuthor">B. Westerbaan</span>, <span class="refTitle">"Kyber Post-Quantum KEM"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cfrg-schwabe-kyber-02</span>, <time datetime="2023-03-31" class="refDate">31 March 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-02">https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Schwabe, P.</span> and <span class="refAuthor">B. Westerbaan</span>, <span class="refTitle">"Kyber Post-Quantum KEM"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cfrg-schwabe-kyber-04</span>, <time datetime="2024-01-02" class="refDate">2 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-04">https://datatracker.ietf.org/doc/html/draft-cfrg-schwabe-kyber-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1549,6 +1530,8 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-6.2">
         <h3 id="name-informative-references">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
@@ -1556,7 +1539,7 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <dl class="references">
 <dt id="COMBINERS">[COMBINERS]</dt>
         <dd>
-<span class="refAuthor">Ounsworth, M.</span>, <span class="refAuthor">Wussler, A.</span>, and <span class="refAuthor">S. Kousidis</span>, <span class="refTitle">"Combiner function for hybrid key encapsulation mechanisms (Hybrid KEMs)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ounsworth-cfrg-kem-combiners-03</span>, <time datetime="2023-03-13" class="refDate">13 March 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ounsworth-cfrg-kem-combiners-03">https://datatracker.ietf.org/doc/html/draft-ounsworth-cfrg-kem-combiners-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Ounsworth, M.</span>, <span class="refAuthor">Wussler, A.</span>, and <span class="refAuthor">S. Kousidis</span>, <span class="refTitle">"Combiner function for hybrid key encapsulation mechanisms (Hybrid KEMs)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ounsworth-cfrg-kem-combiners-05</span>, <time datetime="2024-01-31" class="refDate">31 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ounsworth-cfrg-kem-combiners-05">https://datatracker.ietf.org/doc/html/draft-ounsworth-cfrg-kem-combiners-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="GHP18">[GHP18]</dt>
         <dd>
@@ -1564,7 +1547,7 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 <dt id="HYBRID">[HYBRID]</dt>
         <dd>
-<span class="refAuthor">Stebila, D.</span>, <span class="refAuthor">Fluhrer, S.</span>, and <span class="refAuthor">S. Gueron</span>, <span class="refTitle">"Hybrid key exchange in TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-hybrid-design-06</span>, <time datetime="2023-02-27" class="refDate">27 February 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-06">https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Stebila, D.</span>, <span class="refAuthor">Fluhrer, S.</span>, and <span class="refAuthor">S. Gueron</span>, <span class="refTitle">"Hybrid key exchange in TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-hybrid-design-10</span>, <time datetime="2024-04-05" class="refDate">5 April 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-10">https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="KyberV302">[KyberV302]</dt>
         <dd>
@@ -1572,10 +1555,11 @@ forgo the call to HKDF as well.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 <dt id="TLS-XYBER">[TLS-XYBER]</dt>
       <dd>
-<span class="refAuthor">Westerbaan, B.</span> and <span class="refAuthor">D. Stebila</span>, <span class="refTitle">"X25519Kyber768Draft00 hybrid post-quantum key agreement"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tls-westerbaan-xyber768d00-02</span>, <time datetime="2023-03-31" class="refDate">31 March 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-02">https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Westerbaan, B.</span> and <span class="refAuthor">D. Stebila</span>, <span class="refTitle">"X25519Kyber768Draft00 hybrid post-quantum key agreement"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tls-westerbaan-xyber768d00-03</span>, <time datetime="2023-09-24" class="refDate">24 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-03">https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
 <div id="acknowledgements">
 <section id="appendix-A">
@@ -1607,10 +1591,12 @@ final version of this document.<a href="#appendix-B-1.1.1" class="pilcrow">¶</a
 <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-since-draft-westerbaan-cfrg" class="section-name selfRef">Since draft-westerbaan-cfrg-hpke-xyber768d00-01</a>
         </h3>
 <ul class="normal">
-<li class="normal" id="appendix-B.1-1.1">Corrected test vectors. In particular, specify randomness used during
-encapsulation, and clarify why there is no such thing as an ephemeral keypair.<a href="#appendix-B.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B.1-1.1">
+            <p id="appendix-B.1-1.1.1">Corrected test vectors. In particular, specify randomness used during
+encapsulation, and clarify why there is no such thing as an ephemeral keypair.<a href="#appendix-B.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-B.1-1.2">Clarify correct value of implicit suite_id.<a href="#appendix-B.1-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-B.1-1.2">
+            <p id="appendix-B.1-1.2.1">Clarify correct value of implicit suite_id.<a href="#appendix-B.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1621,11 +1607,14 @@ encapsulation, and clarify why there is no such thing as an ephemeral keypair.<a
 <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-since-draft-westerbaan-cfrg-" class="section-name selfRef">Since draft-westerbaan-cfrg-hpke-xyber768d00-00</a>
         </h3>
 <ul class="normal">
-<li class="normal" id="appendix-B.2-1.1">Add acknowledgements.<a href="#appendix-B.2-1.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B.2-1.1">
+            <p id="appendix-B.2-1.1.1">Add acknowledgements.<a href="#appendix-B.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-B.2-1.2">Elaborate on missing authenticated modes.<a href="#appendix-B.2-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-B.2-1.2">
+            <p id="appendix-B.2-1.2.1">Elaborate on missing authenticated modes.<a href="#appendix-B.2-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-B.2-1.3">Add test vectors for the PSK mode.<a href="#appendix-B.2-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-B.2-1.3">
+            <p id="appendix-B.2-1.3.1">Add test vectors for the PSK mode.<a href="#appendix-B.2-1.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
