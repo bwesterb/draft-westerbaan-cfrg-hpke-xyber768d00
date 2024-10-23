@@ -1,3 +1,10 @@
+# Deprecrated
+
+Kyber is obsoleted by ML-KEM.
+
+Please use [X-Wing](https://github.com/dconnolly/draft-connolly-cfrg-xwing-kem) which combines X25519 and ML-KEM-768 for HPKE.
+
+
 # X25519Kyber768Draft00 hybrid post-quantum KEM for HPKE
 
 This is the working area for the individual Internet-Draft, "X25519Kyber768Draft00 hybrid post-quantum KEM for HPKE".
